@@ -554,7 +554,7 @@ Script System Initialization
 <25:14> Loading Objects\Natural\underwater\und_bump_b.cgf
 <25:14> Loading Objects\Natural\ancient_jungle\anc_tree_vines_a.cgf
 <25:15> Loading Objects\Natural\underwater\und_bump_c.cgf
-<25:15> Loading brushes ...
+<25:15> Loading brushes ... 
 <25:15> Loading Objects\outdoor\human_camp\cratemetalclosesmall.cgf
 <25:15> Loading Objects\outdoor\islanders_structures\hut_onwater_walkway_pilla_s02.cgf
 <25:15> Loading Objects\outdoor\fortifications\sandbag_circle_tall.cgf
