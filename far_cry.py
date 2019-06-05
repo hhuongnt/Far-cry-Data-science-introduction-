@@ -67,8 +67,12 @@ def parse_frags(log_data):
     split_log_data = log_data.split('\n')
     for line in split_log_data:
         if 'killed' in line:
-            line = line.split(' killed ')
-            list_frags.append((line[0], line[1]))
+            line = line.split(' ')
+            print (line)
+            # if len(line) > 4:
+                # list_frags.append((line[0].lstrip('<').rstrip('>'), line[2], line[3], line[5]))
+            # else:
+                # list_frags.append((line[0].lstrip('<').rstrip('>'), line[2]))
     return list_frags
 
 
