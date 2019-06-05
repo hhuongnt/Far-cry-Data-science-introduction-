@@ -63,8 +63,13 @@ def parse_session_mode_and_map(log_data):
 def parse_frags(log_data):
     """
     """
-
-
+    list_frags = []
+    split_log_data = log_data.split('\n')
+    for line in split_log_data:
+        if 'killed' in line:
+            line = line.split(' killed ')
+            list_frags.append((line[0], line[1]))
+    return list_frags
 
 
 log_data = read_log_file('./logs/log00.txt')
@@ -72,3 +77,4 @@ dict_cvar = create_dictionary(log_data)
 # print (dict_cvar['g_timezone'])
 print (parse_log_start_time(log_data, dict_cvar))
 print (parse_session_mode_and_map(log_data))
+print (parse_frags(log_data))
