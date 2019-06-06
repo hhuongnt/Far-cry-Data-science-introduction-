@@ -413,7 +413,7 @@ Script System Initialization
 <19:16> Loading Objects\Natural\underwater\und_bump_b.cgf
 <19:16> Loading Objects\Natural\ancient_jungle\anc_tree_vines_a.cgf
 <19:16> Loading Objects\Natural\underwater\und_bump_c.cgf
-<19:16> Loading brushes ... 
+<19:16> Loading brushes ...
 <19:16> Loading Objects\outdoor\human_camp\cratemetalclosesmall.cgf
 <19:16> Loading Objects\outdoor\islanders_structures\hut_onwater_walkway_pilla_s02.cgf
 <19:16> Loading Objects\outdoor\fortifications\sandbag_circle_tall.cgf
@@ -725,7 +725,7 @@ Script System Initialization
 <24:27> Loading Objects\Natural\swamp_set\sw_crvd_tree.cgf
 <24:27> Loading Objects\Natural\swamp_set\sw_crvd_tree_b.cgf
 <24:27> Loading Objects\Natural\leafy_green_paradise\lgp_fernbush_ba.cgf
-<24:27> Loading brushes ... 
+<24:27> Loading brushes ...
 <24:27> Loading Objects\Outdoor\merc_structures\barrack_mp.cgf
 <24:27> Loading Objects\natural\basic_jungle\bsc_junglerock_static_b.cgf
 <24:27> Loading Objects\glm\ww2_indust_set1\steps\steptrim_base100z.cgf
@@ -1343,7 +1343,7 @@ Script System Initialization
 <24:42> Loading Objects\Natural\underwater\und_bump_b.cgf
 <24:42> Loading Objects\Natural\ancient_jungle\anc_tree_vines_a.cgf
 <24:42> Loading Objects\Natural\underwater\und_bump_c.cgf
-<24:42> Loading brushes ... 
+<24:42> Loading brushes ...
 <24:42> Loading Objects\outdoor\human_camp\cratemetalclosesmall.cgf
 <24:42> Loading Objects\outdoor\islanders_structures\hut_onwater_walkway_pilla_s02.cgf
 <24:42> Loading Objects\outdoor\fortifications\sandbag_circle_tall.cgf
@@ -1653,7 +1653,7 @@ Script System Initialization
 <29:52> Loading Objects\Natural\swamp_set\sw_crvd_tree.cgf
 <29:53> Loading Objects\Natural\swamp_set\sw_crvd_tree_b.cgf
 <29:53> Loading Objects\Natural\leafy_green_paradise\lgp_fernbush_ba.cgf
-<29:53> Loading brushes ... 
+<29:53> Loading brushes ...
 <29:53> Loading Objects\Outdoor\merc_structures\barrack_mp.cgf
 <29:53> Loading Objects\natural\basic_jungle\bsc_junglerock_static_b.cgf
 <29:53> Loading Objects\glm\ww2_indust_set1\steps\steptrim_base100z.cgf
@@ -2271,7 +2271,7 @@ Script System Initialization
 <30:09> Loading Objects\Natural\underwater\und_bump_b.cgf
 <30:09> Loading Objects\Natural\ancient_jungle\anc_tree_vines_a.cgf
 <30:09> Loading Objects\Natural\underwater\und_bump_c.cgf
-<30:09> Loading brushes ... 
+<30:09> Loading brushes ...
 <30:09> Loading Objects\outdoor\human_camp\cratemetalclosesmall.cgf
 <30:09> Loading Objects\outdoor\islanders_structures\hut_onwater_walkway_pilla_s02.cgf
 <30:09> Loading Objects\outdoor\fortifications\sandbag_circle_tall.cgf
@@ -2537,6 +2537,7 @@ Script System Initialization
 <44:18> <Lua> shogun killed Transporter with M4
 <44:44> <Lua> shogun killed itself
 <44:44> <Lua> shogun killed lythanhphu with Boat
+<00:00> <Lua> Transporter killed shogun with OICW
 <45:09> <Lua> Transporter killed shogun with OICW
 <45:11> ================================================================================
 <45:11> == Statistics                                                                 ==
