@@ -5,15 +5,18 @@ import csv
 
 def read_log_file(log_file_pathname):
     """
-    Waypoint 1:
+    Way point 1:
     Read Game Session Log File.
     Return all the bytes from the server log file.
     @param:
     log_file_pathname: pathname of a Far Cry server log file.
     """
-    with open(log_file_pathname, 'r') as f:
-        content = f.read()
-    return content
+    try:
+        with open(log_file_pathname, 'r') as f:
+            return f.read()
+    except FileNotFoundError:
+        print  ('File not found!')
+    
 
 
 def create_dictionary(log_data):
@@ -36,9 +39,9 @@ def create_dictionary(log_data):
 
 def parse_log_start_time(log_data, dict_cvar):
     """
-    Waypoint 2:
+    Way point 2:
     Parse Far Cry Engine's Start Time.
-    Waypoint 3:
+    Way point 3:
     Parse Far Cry Engine's Start Time with Time Zone.
     Return datetime object representing the time the Far Cry
     engine began to log events.
@@ -55,7 +58,7 @@ def parse_log_start_time(log_data, dict_cvar):
 
 def parse_session_mode_and_map(log_data):
     """
-    Waypoint 4:
+    Way point 4:
     Parse Match's Map Name and Game Mode.
     Read the log file and return a tuple (mode, map).
     @param:
@@ -68,21 +71,23 @@ def parse_session_mode_and_map(log_data):
     return (parse_string[6], parse_string[4].split('/')[1].rstrip(','))
 
 
-def full_frag_time(log_data, frag_time, frag_hour, frag_start_time):
+def full_frag_time(log_data, frag_time, timestamp):
     """
     Return full time of frag which is a datetime object with timezone.
     """
+    
+    frag_hour = timestamp.hour
     frag_min = int(frag_time.split(':')[0])
     frag_sec = int(frag_time.split(':')[1])
-    if frag_min < frag_start_time.minute:
-        frag_hour += 1
-    return frag_start_time.replace(hour=frag_hour, minute=frag_min, second=frag_sec).isoformat()
+    if frag_min < timestamp.minute:
+        frag_hour = timestamp.hour + 1
+    return timestamp.replace(hour=frag_hour, minute=frag_min, second=frag_sec)
 
 def parse_frags(log_data):
     """
-    Waypoint 5:
+    Way point 5:
     Parse Frag History.
-    Waypoint 6:
+    Way point 6:
     Parse Frag History with Timezone.
     Return a list of frags.
     Each frag is represented by a tuple in the following form:
@@ -91,26 +96,26 @@ def parse_frags(log_data):
     """
     frags = []
     split_log_data = log_data.split('\n')
-    frag_start_time = parse_log_start_time(log_data, dict_cvar)
-    frag_hour = frag_start_time.hour
+    frag_time = parse_log_start_time(log_data, dict_cvar)
     for line in split_log_data:
         if 'killed' in line:
             line = line.split(' killed ')
             killer_name = line[0].split(' <Lua> ')[1]
             time = line[0].split(' <Lua> ')[0]
-            frag_time=full_frag_time(log_data, time.lstrip('<').rstrip('>'), frag_hour, frag_start_time)
+            frag_time=full_frag_time(log_data, time.lstrip('<').rstrip('>'), frag_time)
+
             if 'itself' not in line:
                 victim_name = line[1].split(' with ')[0]
                 weapon_code = line[1].split(' with ')[1]
-                frags.append((frag_time, killer_name, victim_name, weapon_code))
+                frags.append((frag_time.isoformat(), killer_name, victim_name, weapon_code))
             else:
-                frags.append((frag_time, killer_name))
+                frags.append((frag_time.isoformat(), killer_name))
     return frags
 
 
 def prettify_frags(frags):
     """
-    Waypoint 7:
+    Way point 7:
     Prettify Frag History.
     Return list of frag strings with emojis.
     @param:
@@ -142,9 +147,7 @@ def prettify_frags(frags):
 
 def parse_match_start_and_end_times(log_data):
     """
-    Waypont 8:
-    Determine Game Session's Start and End Times
-    Return the approximate start and end time of the game session.
+    Return the approximat start and end time of the game session.
     """
     log_start_time = parse_log_start_time(log_data, dict_cvar)
     split_log_data = log_data.split('\n')
@@ -163,7 +166,6 @@ def parse_match_start_and_end_times(log_data):
 
 def write_frag_csv_file(log_file_pathname, frags):
     """
-    Waypoint 9: Create Frag History CSV File
     Store frag history in a CSV file.
     """
     with open(log_file_pathname, 'w', newline='') as csvfile:
@@ -172,7 +174,7 @@ def write_frag_csv_file(log_file_pathname, frags):
             spamwriter.writerow(frag)
 
 
-log_data = read_log_file('./logs/log05.txt')
+log_data = read_log_file('./logs/log058.txt')
 dict_cvar = create_dictionary(log_data)
 print (parse_log_start_time(log_data, dict_cvar))
 print (parse_session_mode_and_map(log_data))
@@ -181,4 +183,4 @@ prettified_frags = prettify_frags(frags)
 print ('\n'.join(prettified_frags))
 start_time, end_time = parse_match_start_and_end_times(log_data)
 print(start_time, end_time)
-write_frag_csv_file('./logs/log05.csv', frags)
+# write_frag_csv_file('./logs/log05.csv', frags)
