@@ -5,7 +5,7 @@ import csv
 
 def read_log_file(log_file_pathname):
     """
-    Way point 1:
+    Waypoint 1:
     Read Game Session Log File.
     Return all the bytes from the server log file.
     @param:
@@ -36,9 +36,9 @@ def create_dictionary(log_data):
 
 def parse_log_start_time(log_data, dict_cvar):
     """
-    Way point 2:
+    Waypoint 2:
     Parse Far Cry Engine's Start Time.
-    Way point 3:
+    Waypoint 3:
     Parse Far Cry Engine's Start Time with Time Zone.
     Return datetime object representing the time the Far Cry
     engine began to log events.
@@ -55,7 +55,7 @@ def parse_log_start_time(log_data, dict_cvar):
 
 def parse_session_mode_and_map(log_data):
     """
-    Way point 4:
+    Waypoint 4:
     Parse Match's Map Name and Game Mode.
     Read the log file and return a tuple (mode, map).
     @param:
@@ -80,9 +80,9 @@ def full_frag_time(log_data, frag_time, frag_hour, frag_start_time):
 
 def parse_frags(log_data):
     """
-    Way point 5:
+    Waypoint 5:
     Parse Frag History.
-    Way point 6:
+    Waypoint 6:
     Parse Frag History with Timezone.
     Return a list of frags.
     Each frag is represented by a tuple in the following form:
@@ -110,7 +110,7 @@ def parse_frags(log_data):
 
 def prettify_frags(frags):
     """
-    Way point 7:
+    Waypoint 7:
     Prettify Frag History.
     Return list of frag strings with emojis.
     @param:
@@ -142,7 +142,9 @@ def prettify_frags(frags):
 
 def parse_match_start_and_end_times(log_data):
     """
-    Return the approximat start and end time of the game session.
+    Waypont 8:
+    Determine Game Session's Start and End Times
+    Return the approximate start and end time of the game session.
     """
     log_start_time = parse_log_start_time(log_data, dict_cvar)
     split_log_data = log_data.split('\n')
@@ -161,6 +163,7 @@ def parse_match_start_and_end_times(log_data):
 
 def write_frag_csv_file(log_file_pathname, frags):
     """
+    Waypoint 9: Create Frag History CSV File
     Store frag history in a CSV file.
     """
     with open(log_file_pathname, 'w', newline='') as csvfile:
